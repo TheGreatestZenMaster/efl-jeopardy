@@ -9,22 +9,25 @@ class SessionsController < ApplicationController
         @game = Game.find(params[:game][:id])
         session[:game_id] = @game.id            #=> Better in Cookies?
         @game.is_active = true
-        @game.teams.first.update_columns(name: params[:game][:team][:team1])
-        @game.teams.second.update_columns(name: params[:game][:team][:team2])
+        @game.teams.first.update_columns(name: params[:game][:team][:team1].capitalize)
+        @game.teams.second.update_columns(name: params[:game][:team][:team2].capitalize)
         redirect_to game_path(@game.id)
     end       
     
     def destroy
-        @game = Game.find(session[:game_id])
-        session[:game_id] = nil
-        @game.is_active = false
-        @game.teams.each do |team|
-            team.update_columns(name: nil, score: 0)
-            team.save
-        end
-        @game.questions.each do |q|
-            q.answered = false
-            q.save
+        if session[:game_id].nil?
+        else
+            @game = Game.find(session[:game_id]) 
+            session[:game_id] = nil
+            @game.is_active = false
+            @game.teams.each do |team|
+                team.update_columns(name: nil, score: 0)
+                team.save
+            end
+            @game.questions.each do |q|
+                q.answered = false
+                q.save
+            end
         end
         redirect_to root_url
     end
