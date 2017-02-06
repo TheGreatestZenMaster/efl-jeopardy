@@ -1,0 +1,4 @@
+Game ID:<%= @game.id %><br>
+<% @game.teams.each do |team| %>
+    Team name:<%= team.name %><br>
+<% end %>
