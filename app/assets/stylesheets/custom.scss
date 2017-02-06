@@ -57,6 +57,20 @@ p {
     line-height: 1.7em;
 }
 
+.nav-score {
+  text-align: center;
+  width: 35%;
+
+}
+.score {
+  font-size: 50px;
+  color: white;
+  background-color: #1E90FF;
+  width: 100%;
+  margin-top: -10px;
+  border-radius: 0 0 25px 25px;
+}
+
 /* header */
 
 #logo {
@@ -74,6 +88,9 @@ p {
     }
 }
 
+header.navbar {
+  background: #004d99;
+}
 
 /* footer */
 
@@ -129,53 +146,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
-  }
-}
-
-.users_follow {
-  padding: 0;
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -185,9 +155,53 @@ input, textarea, select, .uneditable-input {
   @include box_sizing
 }
 
+.new_session {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  form {
+    display: inline-block;
+    text-align: center;
+    input[type=submit] {
+    width: 100%;
+    }
+  }
+}
+
+.question_form {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.edit_team {
+  height: 100%;
+  input[type=submit] {
+    width: 30%;
+    height: 200px;
+  }
+  margin-bottom: 0;
+}
+
+div {
+  .team1 {
+  width: 50%;
+  position: relative;
+  float: left;
+  }
+  .team2 {
+  width: 50%;
+  float: right;
+  }
+}
+
 input {
   height: auto !important;
 }
+
 
 #error_explanation {
   color: red;
@@ -227,69 +241,31 @@ input {
   @include box_sizing;
 }
 
-
-/* Users index */
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter; 
+/* Table */
+table {
+  width: 100%;
+  font-size: 48px;
+  border: 1px solid black;
+  td, th, tr {
+    overflow: hidden;
+    text-align: center;
+    width: 20%;
+    height: 50px;
   }
-}
-
-/* Microposts */
-.microposts {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
+  td, tr:not(:first-child) {
+    :hover {
+      background-color: red;
     }
+    height: 80px;
   }
-
-  .timestamp {
-    color: $gray-light;
+  td a {
+    padding-top: 10em;
+    padding-bottom: 10em;
+    margin-top: -10em;
+    margin-bottom: -10em;
     display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+    width: 100%;
+    height: 100%;
   }
 }
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
-  }
-}
-
-td {
-  width: 100px;
-}
-
-
 

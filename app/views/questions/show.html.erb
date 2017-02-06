@@ -1,0 +1,21 @@
+<%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
+<center><h1><%= @question.text %></h1></center>
+
+<div class="question_form">
+    <div class="team1">
+<%= form_for(@team1, :url => game_path(@game.id), method: "get") do |f| %>
+    <%= f.hidden_field :id, value: 1 %>
+    <%= f.hidden_field :points, value: @question.points %>
+    <%= f.hidden_field :question, value: @question.id %>
+    <%= submit_tag "Team One"%>
+<% end %>
+</div>
+<div class="team2">
+<%= form_for(@team2, :url => game_path(@game.id), method: "get") do |f| %>
+    <%= f.hidden_field :id, value: 2 %>
+    <%= f.hidden_field :points, value: @question.points %>
+    <%= f.hidden_field :question, value: @question.id %>
+    <%= submit_tag "Team Two"%>
+<% end %>
+</div>
+</div>

@@ -19,10 +19,12 @@ class SessionsController < ApplicationController
         session[:game_id] = nil
         @game.is_active = false
         @game.teams.each do |team|
-            team.update_columns(name: nil)
+            team.update_columns(name: nil, score: 0)
+            team.save
         end
         @game.questions.each do |q|
             q.answered = false
+            q.save
         end
         redirect_to root_url
     end

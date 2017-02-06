@@ -1,8 +1,11 @@
-<%= form_for(@game, :url => sessions_path) do |f| %>
+<div class="new_session"><%= form_for(@game, :url => sessions_path) do |f| %>
     <%= f.hidden_field :id, :value => 1 %>
     <%= f.fields_for :team do |t| %>
+        <%= t.label :team1, "Team One" %>
         <%= t.text_field :team1 %>
+        <br>
+        <%= t.label :team2, "Team Two" %>
         <%= t.text_field :team2 %>
     <% end %>
     <%= f.submit "Start"%>
-<% end %>
+<% end %></div>

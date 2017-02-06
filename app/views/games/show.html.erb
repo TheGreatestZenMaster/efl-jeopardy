@@ -1,4 +1,25 @@
-Game ID:<%= @game.id %><br>
-<% @game.teams.each do |team| %>
-    Team name:<%= team.name %><br>
-<% end %>
+<%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
+<br>
+<table>
+    <tr>
+        <th> You </th>
+        <th>Sports</th>
+        <th>Fruits</th>
+        <th>I can~</th>
+        <th>Countries</th>
+    </tr>
+    <% @questions.each do |q|%>
+        <tr>
+        <% if q[0].answered %>
+            <td></td>
+        <% else %>
+            <td><div class="center-cell"><%= link_to q[0].points, question_path(q[0].id) %></div></td>
+        <% end %>
+        <% if q[1].answered %>
+            <td></td>
+        <% else %>
+            <td><div class="center-cell"><%= link_to q[1].points, question_path(q[1].id) %></div></td>
+         <% end %>
+        </tr>
+    <% end %>
+</table>
