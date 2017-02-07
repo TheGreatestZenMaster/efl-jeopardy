@@ -1,5 +1,8 @@
 <%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
-<center><h1><%= @question.text %></h1></center>
+<center><h1><%= simple_format(@question.text) %></h1>
+<% if @question.image %>
+    <%= image_tag("#{@question.image}", class: "question-image")%>
+<% end %></center>
 
 <div class="question_form">
     <div class="team1">

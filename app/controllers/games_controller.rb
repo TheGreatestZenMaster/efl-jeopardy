@@ -5,8 +5,8 @@ class GamesController < ApplicationController
        @team1 = @game.teams.first
        @team2 = @game.teams.second
        @questions = []
-       3.times do |x|
-           @questions << @game.questions.offset(2*x).limit(2)
+       5.times do |x|
+           @questions << @game.questions.offset(5*x).limit(5)
        end
        if params[:team]
            if params[:team][:id] == '1'
