@@ -4,8 +4,8 @@ class GamesController < ApplicationController
     QUESTIONS = { "L1.1" => {text: "What animal do you like?", image: nil, points: 10},
                 "L2.1" => {text: "What's this?", image: "january.png", points: 10},
                 "L3.1" => {text: "What's this?", image: "playsoccer.png", points: 10},
-                "L4.1" => {text: "L4", image: nil, points: 10},
-                "L5.1" => {text: "L5", image: nil, points: 10},
+                "L4.1" => {text: "What's this?", image: nil, points: 10},
+                "L5.1" => {text: "What's this?", image: nil, points: 10},
                 
                 "L1.2" => {text: "What's this?", image: "bear.jpg", points: 20},
                 "L2.2" => {text: "What's this?<br>みっか", image: nil, points: 20},
