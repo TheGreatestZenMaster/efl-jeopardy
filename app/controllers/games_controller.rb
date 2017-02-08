@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+    before_action :game_started, only: [:show]
+    
     
     def show
        @game = Game.find(params[:id])
@@ -21,4 +23,10 @@ class GamesController < ApplicationController
            @question.save
        end
     end
+    
+    private
+        
+        def game_started
+           redirect_to(root_url) if session[:game_id].nil? 
+        end
 end

@@ -3,7 +3,10 @@
     <%= link_to "Jeopardy", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Reset", reset_path, method: "delete", data: { confirm: 'Are you sure?' } %></li>
+          <% if session[:game_id] %>
+            <li><%= link_to "Game", game_path(session[:game_id]) %></li>
+            <li><%= link_to "Reset", reset_path, method: "delete", data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
       </ul>
     </nav>
   </div>

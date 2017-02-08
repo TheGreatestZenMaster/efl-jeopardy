@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
         
     private
     
-        def game_in_play
-            redirect_to(game_path(session[:game_id])) unless session[:game_id].nil?
-        end
+    def game_in_play
+        redirect_to(game_path(session[:game_id])) unless session[:game_id].nil?
+    end
 end
