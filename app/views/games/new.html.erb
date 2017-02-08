@@ -1,4 +1,4 @@
-<div class="new_session"><%= form_for(@game, :url => sessions_path) do |f| %>
+<div class="new_game"><%= form_for @game do |f| %>
     <%= f.hidden_field :id, :value => 1 %>
     <%= f.fields_for :team do |t| %>
         <%= t.label :team1, "Team One" %>
