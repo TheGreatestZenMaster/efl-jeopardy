@@ -2,11 +2,11 @@
 <br>
 <table>
     <tr>
-        <th> CH1 </th>
-        <th> CH2 </th>
-        <th> CH3 </th>
-        <th> CH4 </th>
-        <th> CH5 </th>
+        <th>What's this?</th>
+        <th> E英 >> J和 </th>
+        <th> J和 >> E英 </th>
+        <th>Answers</th>
+        <th>Questions</th>
     </tr>
     <% @questions.each do |q|%>
         <tr>
@@ -20,3 +20,11 @@
         </tr>
     <% end %>
 </table>
+<%= form_for(@game, :url => game_path(@game.id), :html => { :method => 'GET' }) do |f| %>
+    <%= f.hidden_field :answered, :value => true %>
+    <%= f.submit "Answer All" %>
+<% end %>
+<%= form_for(@game, :url => game_path(@game.id), :html => { :method => 'GET' }) do |f| %>
+    <%= f.hidden_field :round_two, :value => true %>
+    <%= f.submit "Round 2" %>
+<% end %>

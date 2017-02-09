@@ -264,8 +264,10 @@ input {
 /* Table */
 table {
   width: 100%;
-  font-size: 48px;
   border: 1px solid black;
+  th {
+      font-size: 36px;
+  }
   td, th, tr {
     overflow: hidden;
     text-align: center;
@@ -278,6 +280,7 @@ table {
       color: white;
       text-decoration: none;
     }
+    font-size: 56px;
     height: 80px;
   }
   td a {

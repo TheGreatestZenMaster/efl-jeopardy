@@ -1,36 +1,65 @@
 class GamesController < ApplicationController
     before_action :game_started, only: [:show]
     before_action :game_exists, only: [:show]
-    QUESTIONS = { "L1.1" => {text: "What animal do you like?", image: nil, points: 10},
-                "L2.1" => {text: "What's this?", image: "january.png", points: 10},
-                "L3.1" => {text: "What's this?", image: "playsoccer.png", points: 10},
-                "L4.1" => {text: "What's this?", image: nil, points: 10},
-                "L5.1" => {text: "What's this?", image: nil, points: 10},
+    QUESTIONS = { "L1.1" => {text: "What's this?", image: "p.png", points: 10},
+                "L2.1" => {text: "I like Elephants.", image: nil, points: 10},
+                "L3.1" => {text: "インド", image: nil, points: 10},
+                "L4.1" => {text: "What animal do you like?", points: 10},
+                "L5.1" => {text: "I like _____.", image: "pizza.png", points: 10},
                 
                 "L1.2" => {text: "What's this?", image: "bear.jpg", points: 20},
-                "L2.2" => {text: "What's this?<br>みっか", image: nil, points: 20},
-                "L3.2" => {text: "P11 Who am I quiz", image: nil, points: 20},
-                "L4.2" => {text: "L4", image: nil, points: 20},
-                "L5.2" => {text: "L5", image: nil, points: 20},
+                "L2.2" => {text: "January", points: 20},
+                "L3.2" => {text: "１２月", image: nil, points: 20},
+                "L4.2" => {text: "What time is it?", image: nil, points: 20},
+                "L5.2" => {text: "It's _____.", image: "america.png", points: 20},
                 
-                "L1.3" => {text: "What are these?<br>m,n,o", points: 30},
-                "L2.3" => {text: "what are these?<br>５月、６月、７月", points: 30},
-                "L3.3" => {text: "E -> J:<br>やきゅうができます", points: 30},
-                "L4.3" => {text: "L4", points: 30},
-                "L5.3" => {text: "L5", points: 30},
+                "L1.3" => {text: "What's this?", image: "january.png", points: 30},
+                "L2.3" => {text: "Forty-seven", points: 30},
+                "L3.3" => {text: "１０時１０分", points: 30},
+                "L4.3" => {text: "When is your birthday?", points: 30},
+                "L5.3" => {text: "I can _____.", image: "playthepiano.png", points: 30},
                 
-                "L1.4" => {text: "Count from 40-60", points: 40},
-                "L2.4" => {text: "What month is your birthday?", points: 40},
-                "L3.4" => {text: "L3?", points: 40},
-                "L4.4" => {text: "L4", points: 40},
-                "L5.4" => {text: "L5", points: 40},
+                "L1.4" => {text: "What's this?", image: "playsoccer.png", points: 40},
+                "L2.4" => {text: "September tenth", points: 40},
+                "L3.4" => {text: "野球ができます", points: 40},
+                "L4.4" => {text: "Can you swim?", points: 40},
+                "L5.4" => {text: "I can't _____.", image: "swim.png", points: 40},
 
-                "L1.5" => {text: "Say the ABCs", points: 50},
-                "L2.5" => {text: "When is your birthday?", points: 50},
-                "L3.5" => {text: "L3?", points: 50},
-                "L4.5" => {text: "L4", points: 50},
-                "L5.5" => {text: "L5", points: 50}}
+                "L1.5" => {text: "What's this?", image: "one_oclock.png", points: 50},
+                "L2.5" => {text: "I can play baseball.", points: 50},
+                "L3.5" => {text: "イタリアに行きたいです", points: 50},
+                "L4.5" => {text: "Who am I?<br>P.12", points: 50},
+                "L5.5" => {text: "My birthday is _____.", image: '#', points: 50}}
                 
+     QUESTIONS2 = { "L1.1" => {text: "What's this?1", image: "p.png", points: 20},
+                "L2.1" => {text: "I like Elephants.", image: nil, points: 20},
+                "L3.1" => {text: "インド", image: nil, points: 20},
+                "L4.1" => {text: "What animal do you like?", points: 20},
+                "L5.1" => {text: "I like _____.", image: "pizza.png", points: 20},
+                
+                "L1.2" => {text: "What's this?", image: "bear.jpg", points: 40},
+                "L2.2" => {text: "January", points: 40},
+                "L3.2" => {text: "１２月", image: nil, points: 40},
+                "L4.2" => {text: "What time is it?", image: nil, points: 40},
+                "L5.2" => {text: "It's _____.", image: "america.png", points: 40},
+                
+                "L1.3" => {text: "What's this?", image: "january.png", points: 60},
+                "L2.3" => {text: "Forty-seven", points: 60},
+                "L3.3" => {text: "１０時１０分", points: 60},
+                "L4.3" => {text: "When is your birthday?", points: 60},
+                "L5.3" => {text: "I can _____.", image: "playthepiano.png", points: 60},
+                
+                "L1.4" => {text: "What's this?", image: "playsoccer.png", points: 80},
+                "L2.4" => {text: "September tenth", points: 80},
+                "L3.4" => {text: "野球ができます", points: 80},
+                "L4.4" => {text: "Can you swim?", points: 80},
+                "L5.4" => {text: "I can't _____.", image: "swim.png", points: 80},
+
+                "L1.5" => {text: "What's this?", image: "one_oclock.png", points: 100},
+                "L2.5" => {text: "I can play baseball.", points: 100},
+                "L3.5" => {text: "イタリアに行きたいです", points: 100},
+                "L4.5" => {text: "Who am I?<br>P.12", points: 100},
+                "L5.5" => {text: "My birthday is _____.", image: '#', points: 100}}
     def new
        @game = Game.new
     end
@@ -55,9 +84,33 @@ class GamesController < ApplicationController
        @team1 = @game.teams.first
        @team2 = @game.teams.second
        @questions = []
-       5.times do |x|
-           @questions << @game.questions.offset(5*x).limit(5)
+       if (@game.questions.all?{|x| x.answered})
+            QUESTIONS2.each do |key, value|
+                @game.questions.create!(value)
+            end
+            5.times do |x|
+                @questions << @game.questions.offset(5*x + 25).limit(5)
+            end
+       else
+            5.times do |x|
+                @questions << @game.questions.offset(5*x).limit(5)
+            end
        end
+       if params[:game]
+           if params[:game][:answered]
+                @questions.each do |set|
+                    set.each do |question|
+                        question.answered = true
+                        question.save
+                    end
+                end
+                @questions[0][0].answered = false
+                @questions[0][0].save
+            end
+            redirect_to game_path(@game.id) if params[:game][:round_two]
+        end
+       
+                
        if params[:team]
            if params[:team][:id] == '1'
                @team1.score += params[:team][:points].to_i
