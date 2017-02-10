@@ -1,5 +1,11 @@
 <%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
-<br>
+<br><center><% if @game.questions.limit(25).all? { |x| x.answered } && (@question_set[0] != @game.questions.limit(5).offset(25)) %>
+    <%= form_tag(game_path(@game.id), :method => "GET") do %>
+        <%= hidden_field_tag :round_two, true %>
+        <%= submit_tag "Round 2", :class => "round_two"%>
+    <% end %>
+<% end %>
+</center>
 <table>
     <tr>
         <th>What's this?</th>
@@ -8,7 +14,7 @@
         <th>Answers</th>
         <th>Questions</th>
     </tr>
-    <% @questions.each do |q|%>
+    <% @question_set.each do |q|%>
         <tr>
             <% q.each do |x| %>
                 <% if x.answered %>
@@ -20,11 +26,7 @@
         </tr>
     <% end %>
 </table>
-<%= form_for(@game, :url => game_path(@game.id), :html => { :method => 'GET' }) do |f| %>
-    <%= f.hidden_field :answered, :value => true %>
-    <%= f.submit "Answer All" %>
-<% end %>
-<%= form_for(@game, :url => game_path(@game.id), :html => { :method => 'GET' }) do |f| %>
-    <%= f.hidden_field :round_two, :value => true %>
-    <%= f.submit "Round 2" %>
-<% end %>
+<center><%= form_tag(game_path(@game.id), :method => 'GET' ) do %>
+    <%= hidden_field_tag :answer_all, true %>
+    <%= submit_tag "Answer All", :class => "round_two" %>
+<% end %></center>

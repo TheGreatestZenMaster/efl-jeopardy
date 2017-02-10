@@ -266,7 +266,7 @@ table {
   width: 100%;
   border: 1px solid black;
   th {
-      font-size: 36px;
+      font-size: 30px;
   }
   td, th, tr {
     overflow: hidden;
@@ -299,4 +299,12 @@ img {
   width: 300px;
   height: auto;
   text-align: center;
+}
+
+.round_two {
+  text-align: center;
+  height: 100%;
+  width: 100px;
+  color: white;
+  background-color: #1E90FF;
 }
