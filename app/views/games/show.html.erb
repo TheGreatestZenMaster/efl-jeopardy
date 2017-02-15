@@ -14,13 +14,13 @@
         <th>Answers</th>
         <th>Questions</th>
     </tr>
-    <% @question_set.each do |q|%>
+    <% @question_set.each do |set|%>
         <tr>
-            <% q.each do |x| %>
-                <% if x.answered %>
+            <% set.each do |question| %>
+                <% if question.answered %>
                     <td class="no-highlight"></td>
                 <% else %>
-                    <td><div class="center-cell"><%= link_to x.points, question_path(x.id) %></div></td>
+                    <td><div class="center-cell"><%= link_to question.points, question_path(question.id) %></div></td>
                 <% end %>
             <% end %>
         </tr>
