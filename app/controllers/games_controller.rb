@@ -84,7 +84,7 @@ class GamesController < ApplicationController
         @game = Game.find(params[:id])
         @team1 = @game.teams.first
         @team2 = @game.teams.second
-        @question_set = @game.set_roun
+        @question_set = @game.set_round
         
         @game.answer_all  if params[:answer_all]
 
