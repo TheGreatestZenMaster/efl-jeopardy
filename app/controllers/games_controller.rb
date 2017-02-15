@@ -84,13 +84,9 @@ class GamesController < ApplicationController
         @game = Game.find(params[:id])
         @team1 = @game.teams.first
         @team2 = @game.teams.second
-        @question_set = []
-        (@game.questions.limit(25).all? {|x| x.answered == true})? @round =  25: @round = 0
-        (0..4).each {|x| @question_set << @game.questions.limit(5).offset((5*x) + @round)}
+        @question_set = @game.set_roun
         
-        if params[:answer_all]
-            @game.answer_all 
-        end
+        @game.answer_all  if params[:answer_all]
 
         if params[:team]
           if params[:team][:id] == '1'
@@ -100,10 +96,10 @@ class GamesController < ApplicationController
               @team2.score += params[:team][:points].to_i
               @team2.save
           end
-          @question = Question.find(params[:team][:question])
-          @question.answered = true
-          @question.save
-      end
+          question = Question.find(params[:team][:question])
+          question.answered = true
+          question.save
+        end
     end
     
     
