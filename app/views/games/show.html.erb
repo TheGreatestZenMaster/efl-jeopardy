@@ -1,31 +1,32 @@
 <%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
-<br><center><% if @game.questions.limit(25).all? { |x| x.answered } && (@question_set[0] != @game.questions.limit(5).offset(25)) %>
-    <%= form_tag(game_path(@game.id), :method => "GET") do %>
+<br><% if @game.questions.limit(25).all? { |x| x.answered } && (@question_set[0] != @game.questions.limit(5).offset(25)) %>
+    <div class= "round_two"><%= form_tag(game_path(@game.id), :method => "GET") do %>
         <%= hidden_field_tag :round_two, true %>
-        <%= submit_tag "Round 2", :class => "round_two"%>
+        <%= submit_tag "Round 2", :class => "round_two"%></div>
     <% end %>
-<% end %>
 </center>
-<table>
-    <tr>
-        <th>What's this?</th>
-        <th> E英 >> J和 </th>
-        <th> J和 >> E英 </th>
-        <th>Answers</th>
-        <th>Questions</th>
-    </tr>
-    <% @question_set.each do |set|%>
+<% else %>
+    <table>
         <tr>
-            <% set.each do |question| %>
-                <% if question.answered %>
-                    <td class="no-highlight"></td>
-                <% else %>
-                    <td><div class="center-cell"><%= link_to question.points, question_path(question.id) %></div></td>
-                <% end %>
-            <% end %>
+            <th>これはなに？</th>
+            <th> 英語から日本語 </th>
+            <th> 日本語から英語 </th>
+            <th>しつもん</th>
+            <th>こたえ</th>
         </tr>
-    <% end %>
-</table>
+        <% @question_set.each do |set|%>
+            <tr>
+                <% set.each do |question| %>
+                    <% if question.answered %>
+                        <td class="no-highlight"></td>
+                    <% else %>
+                        <td><div class="center-cell"><%= link_to question.points, question_path(question.id) %></div></td>
+                    <% end %>
+                <% end %>
+            </tr>
+        <% end %>
+    </table>
+<% end %>
 <center><%= form_tag(game_path(@game.id), :method => 'GET' ) do %>
     <%= hidden_field_tag :answer_all, true %>
     <%= submit_tag "Answer All", :class => "round_two" %>
