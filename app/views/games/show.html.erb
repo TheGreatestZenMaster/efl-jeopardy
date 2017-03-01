@@ -1,5 +1,5 @@
 <%= render "shared/score_header", :locals => {:team1 => @team1, :team2 => @team2} %>
-<br><% if @game.questions.limit(25).all? { |x| x.answered } && (@question_set[0] != @game.questions.limit(5).offset(25)) %>
+<br><% if @game.questions.limit(30).all? { |x| x.answered } && (@question_set[0] != @game.questions.limit(5).offset(30)) %>
     <div class= "round_two"><%= form_tag(game_path(@game.id), :method => "GET") do %>
         <%= hidden_field_tag :round_two, true %>
         <%= submit_tag "Round 2", :class => "round_two"%></div>
